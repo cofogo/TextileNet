@@ -26,9 +26,13 @@ def read_json(filename):
 
 def download_files(parent_dir, files):
     for fname, cls, url in files:
-        img_data = requests.get(url).content
-        with open(f'{parent_dir}/{cls}/{fname}', 'wb') as handler:
-            handler.write(img_data)
+        try:
+            img_data = requests.get(url).content
+            with open(f'{parent_dir}/{cls}/{fname}', 'wb') as handler:
+                handler.write(img_data)
+        # if the url is not valid, skip it
+        except:
+            pass
 
 
 print(args.parent_dir, args.partition, args.test)
