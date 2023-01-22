@@ -121,6 +121,17 @@ We report their top-1 and top-5 accuracy, more details are in the paper:
 <br />
 <br />
 
+
+# CITATION
+```
+@article{zhong2023textilenet,
+  title={TextileNet: A Material Taxonomy-based Fashion Textile Dataset},
+  author={Zhong, Shu and Ribul, Miriam and Cho, Youngjun and Obrist, Marianna},
+  journal={arXiv preprint arXiv:2301.06160},
+  year={2023}
+}
+```
+
 # LICENCE
 The data collection code is released with the MIT license. 
 For TextileNet dataset, the author has applied a Creative Commons Attribution (CC BY) licence to any Author Accepted Manuscript version arising. 
