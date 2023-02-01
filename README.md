@@ -111,10 +111,10 @@ We report their top-1 and top-5 accuracy, more details are in the paper:
 
 | Dataset Partition |  Network    | Accuracy (top1/5)    |
 | ----------- | ----------- | --------- |
-| TextileNet-fibre      | Resnet18    |  49.35±0.22/82.39±0.04    |
-| TextileNet-fibre   | ViT       |  44.39±0.08/78.51±0.04         |
-| TextileNet-fabric      | Resnet18    |  58.17±0.40/88.68±0.19    |
-| TextileNet-fabric   | ViT        |   58.51±0.04/87.77±0.07        |
+| TextileNet-fibre      | Resnet50    |  49.74±0.27 / 87.32±0.14    |
+| TextileNet-fibre   | ViT       |  53.32±0.64 / 88.46±0.26         |
+| TextileNet-fabric      | Resnet50    |  65.28±0.67 / 90.36±0.31    |
+| TextileNet-fabric   | ViT        |   67.32±0.45 / 92.12±0.26        |
 
 
 
