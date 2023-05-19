@@ -26,7 +26,7 @@ The user has to first download our dataset as a zip file from the following link
   * [TextileNet-fabric](https://drive.google.com/file/d/1G_g3NEcluW9iKbWY6BiCMcSo0eLxCG0z/view)
 
 * One Drive
-  * [TextileNet-fibre](https://liveuclac-my.sharepoint.com/:u:/g/personal/ucabs31_ucl_ac_uk/EcEcoqBIjr9HvE4RJOcyD_YB7ZXc8ws-g5naMnlI6U-nIg)
+  * [TextileNet-fibre](https://liveuclac-my.sharepoint.com/:u:/g/personal/ucabs31_ucl_ac_uk/EbNpQu2RER5IvkvbB5H3zPoB2Op_gVjGWMi7UcThfkFRtQ?e=tHLRK0)
   * [TextileNet-fabric](https://liveuclac-my.sharepoint.com/:u:/g/personal/ucabs31_ucl_ac_uk/EcEcoqBIjr9HvE4RJOcyD_YB7ZXc8ws-g5naMnlI6U-nIg)
 
 After extracting both of the these downloaded files to a directory (say `data`), the user should have the following file structure
