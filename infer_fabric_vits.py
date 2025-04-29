@@ -1,12 +1,15 @@
 import torch
 import os
 import ast
+import random
 import PIL.Image as Image
 from collections import OrderedDict
 from torchvision import transforms
 from src.vits_models.vision_transformer import vit_tiny_patch16_224 as vit_test
 
-test_data = 'data/fabric/test'
+# Directory containing images for inference
+image_dir = '/Users/ties/Documents/GitHub/mmfashion/data/Landmark_Detect/Img/img'
+num_random_images = 10 # Number of random images to infer
 
 # Load the model weights
 model = vit_test(num_classes=27)
@@ -43,20 +46,47 @@ with open('labels/fabric_label.txt', 'r') as f:
 fabric_dict = ast.literal_eval(content)
 fabric_dict = {v: k for k, v in fabric_dict.items()}
 
-fabrics = fabric_dict.values()
+# Get list of all image files
+try:
+    all_image_files = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
+except FileNotFoundError:
+    print(f"Error: Image directory not found at {image_dir}")
+    exit()
 
-# Run inference
+if not all_image_files:
+    print(f"Error: No image files found in {image_dir}")
+    exit()
+
+# Select random images
+random_image_files = random.sample(all_image_files, min(num_random_images, len(all_image_files)))
+
+# Run inference on random images
 with torch.no_grad():
-    for fabric in fabrics:
-        fabric_path = os.path.join(test_data, fabric)
-        img_name = os.listdir(fabric_path)[0]
-        img_path = os.path.join(fabric_path, img_name)
-        example_image = Image.open(img_path).convert('RGB')
+    for img_name in random_image_files:
+        img_path = os.path.join(image_dir, img_name)
+        try:
+            example_image = Image.open(img_path).convert('RGB')
+        except Exception as e:
+            print(f"Could not open or process image {img_path}: {e}")
+            continue
+
         transformed_image = transform(example_image).unsqueeze(0)
         output = model(transformed_image)
-        output_name = fabric_dict[torch.argmax(output).item()]
-        
+        predicted_label_index = torch.argmax(output).item()
+
+        # Check if the predicted index is in the fabric_dict
+        if predicted_label_index in fabric_dict:
+            output_name = fabric_dict[predicted_label_index]
+        else:
+            # Handle cases where the prediction index might be out of bounds
+            # or not present in the loaded label dictionary.
+            output_name = f"Unknown Label Index: {predicted_label_index}"
+
         # show image
-        example_image.show('img')
-        
-        print(f"{(fabric == output_name)*1} Fabric: {fabric}, Prediction: {output_name}")
+        try:
+            example_image.show(f'Image: {img_name}')
+        except Exception as e:
+            print(f"Could not display image {img_path}: {e}")
+
+
+        print(f"Image: {img_name}, Prediction: {output_name}")
