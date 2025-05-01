@@ -12,7 +12,7 @@ image_dir = '/Users/ties/Documents/GitHub/mmfashion/data/Landmark_Detect/Img/img
 num_random_images = 10 # Number of random images to infer
 
 # Load the model weights
-model = vit_test(num_classes=10) # Updated number of classes for fibre
+model = vit_test(num_classes=33) # Updated number of classes for fibre
 
 # Load the checkpoint
 checkpoint_path = 'baselines/TextileNet-fibre/vits_ckpt.pth' # Updated checkpoint path for fibre

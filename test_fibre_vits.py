@@ -9,7 +9,7 @@ from src.vits_models.vision_transformer import vit_tiny_patch16_224 as vit_test
 test_data = 'data/fibre/test' # Updated test data path for fibre
 
 # Load the model weights
-model = vit_test(num_classes=10) # Updated number of classes for fibre
+model = vit_test(num_classes=33) # Updated number of classes for fibre
 
 # Load the checkpoint
 checkpoint_path = 'baselines/TextileNet-fibre/vits_ckpt.pth' # Updated checkpoint path for fibre
